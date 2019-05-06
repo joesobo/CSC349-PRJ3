@@ -32,7 +32,7 @@ public class GameProblem{
                 //convert input to integer
                 for(int i = 0; i < items.length; i++){
                     if(!items[i].equals("")){
-                        list.add(Integer.parseInt((items[i])));
+                        list.add(Integer.parseInt(items[i]));
                     }
                 }
             }
@@ -161,6 +161,6 @@ public class GameProblem{
                 maxI++;
             }
         }
-        System.out.print("exit\n");
+        System.out.print("exit\n"); 
     }
 }
