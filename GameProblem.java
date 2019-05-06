@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.io.*;
 
 public class GameProblem{
-    public static void main(String args[]){
+    public static void main(String args[]) throws IOException{
         List<Integer> list = new ArrayList<Integer>();
         BufferedReader reader;
         int x;
@@ -23,23 +23,17 @@ public class GameProblem{
         File file = new File(input);
 
         //read file
-        try{
-            reader = new BufferedReader(new FileReader(file));
-            String text;
-            while((text = reader.readLine()) != null){
-                //split line input
-                String[] items = text.split("\\s+");
-                //convert input to integer
-                for(int i = 0; i < items.length; i++){
-                    if(!items[i].equals("")){
-                        list.add(Integer.parseInt(items[i]));
-                    }
+        reader = new BufferedReader(new FileReader(file));
+        String text;
+        while((text = reader.readLine()) != null){
+            //split line input
+            String[] items = text.split("\\s+");
+            //convert input to integer
+            for(int i = 0; i < items.length; i++){
+                if(!items[i].equals("")){
+                    list.add(Integer.parseInt(items[i]));
                 }
             }
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }catch (IOException e){
-            e.printStackTrace();
         }
 
         //get grid size
@@ -58,6 +52,7 @@ public class GameProblem{
 
         game(x,y,A);
         inputReader.close();
+        reader.close();
     }
 
     public static void game(int n, int m, int[][] A){
@@ -111,31 +106,31 @@ public class GameProblem{
         printCorrect(S, R);
     }
 
-    private static void printValues(int[][]A, int[][]S, char[][]R){
-        System.out.println("A:");
-        for(int i = 0; i < A.length; i++){
-            for(int j = 0; j < A[0].length; j++){
-                System.out.printf("%3d", A[i][j]);
-            }
-            System.out.println("");
-        }
+    // private static void printValues(int[][]A, int[][]S, char[][]R){
+    //     System.out.println("A:");
+    //     for(int i = 0; i < A.length; i++){
+    //         for(int j = 0; j < A[0].length; j++){
+    //             System.out.printf("%3d", A[i][j]);
+    //         }
+    //         System.out.println("");
+    //     }
 
-        System.out.println("S:");
-        for(int i = 0; i < S.length; i++){
-            for(int j = 0; j < S[0].length; j++){
-                System.out.printf("%3d", S[i][j]);
-            }
-            System.out.println("");
-        }
+    //     System.out.println("S:");
+    //     for(int i = 0; i < S.length; i++){
+    //         for(int j = 0; j < S[0].length; j++){
+    //             System.out.printf("%3d", S[i][j]);
+    //         }
+    //         System.out.println("");
+    //     }
 
-        System.out.println("R:");
-        for(int i = 0; i < R.length; i++){
-            for(int j = 0; j < R[0].length; j++){
-                System.out.printf("%3c", R[i][j]);
-            }
-            System.out.println("");
-        }
-    }
+    //     System.out.println("R:");
+    //     for(int i = 0; i < R.length; i++){
+    //         for(int j = 0; j < R[0].length; j++){
+    //             System.out.printf("%3c", R[i][j]);
+    //         }
+    //         System.out.println("");
+    //     }
+    // }
 
     private static void printCorrect(int[][]S, char[][]R){
         int maxScore = 0;

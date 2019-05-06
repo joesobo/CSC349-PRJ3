@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.io.*;
 
 public class FactoryProblem{
-    public static void main(String args[]){
+    public static void main(String args[]) throws IOException {
         List<Integer> list = new ArrayList<Integer>();
         BufferedReader reader;
         int n;
@@ -24,21 +24,15 @@ public class FactoryProblem{
         File file = new File(input);
 
         //read file
-        try{
-            reader = new BufferedReader(new FileReader(file));
-            String text;
-            while((text = reader.readLine()) != null){
-                String[] items = text.split("\\s+");
-                for(int i = 0; i < items.length; i++){
-                    if(!items[i].equals("")){
-                        list.add(Integer.parseInt(items[i]));
-                    }
+        reader = new BufferedReader(new FileReader(file));
+        String text;
+        while((text = reader.readLine()) != null){
+            String[] items = text.split("\\s+");
+            for(int i = 0; i < items.length; i++){
+                if(!items[i].equals("")){
+                    list.add(Integer.parseInt(items[i]));
                 }
             }
-        } catch(FileNotFoundException e){
-            e.printStackTrace();
-        } catch(IOException e){
-            e.printStackTrace();
         }
 
         n = list.get(0);
@@ -68,6 +62,7 @@ public class FactoryProblem{
 
         factory(n, e1, e2, x1, x1, a, t);
         inputReader.close();
+        reader.close();
     }
 
     public static void factory(int n, int e1, int e2, int x1, int x2, int[][]a, int[][]t){
